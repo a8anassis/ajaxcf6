@@ -2,8 +2,8 @@
     width: 40%;
     margin-right: auto;
     margin-left: auto;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .center {
@@ -21,4 +21,5 @@
     margin-top: 20px;
     width: 150px;
     height: 48px;
+    color: blue;
 }

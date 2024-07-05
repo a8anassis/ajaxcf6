@@ -1,0 +1,14 @@
+<library>
+    <book>
+        <title>Java Fundamentals</title>
+        <author>A. Androutsos</author>
+    </book>
+    <book>
+        <title>The art of programming</title>
+        <author>D. Knuth</author>
+    </book>
+    <book>
+        <title>Computer Netoworks</title>
+        <author>A. Tanenbaum</author>
+    </book>
+</library>
