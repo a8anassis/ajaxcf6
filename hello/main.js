@@ -21,5 +21,6 @@ function fetchData() {
     }
 
     xhr.send()
+
 }
 
