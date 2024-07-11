@@ -10,7 +10,7 @@ function fetchBooks() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-            //   /  console.log(JSON.parse(xhr.responseText))
+            //     console.log(JSON.parse(xhr.responseText))
                 handleResults(JSON.parse(xhr.responseText))
             } else {
                 onAPIError()
@@ -35,7 +35,7 @@ function handleResults(response) {
 }
 
 function buildBooks(books) {
-    let output = `<tr><th>Title</th>Author<th></th></tr>`
+    let output = `<tr><th>Title</th><th>Author</th></tr>`
 
     for (const book of books) {
         let title = book.title
