@@ -18,6 +18,7 @@ function fetchBooks() {
         }
     }
     xhr.send()
+    
 }
 
 function handleResults(response) {
