@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=fo, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+
+        <label for="limitId">Limit</label>
+        <input type="text" name="" id="limitId" value="1000000">
+        <input type="text" name="" id="testId">
+        <button type="button" id="generateBtn">Generate Primes</button>
+        <button type="button" id="resetBtn">Reset</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+        const limitDefault = 1000000
+
+        $(function() {
+            $('#generateBtn').on('click', function() {
+                generateBtnClicked()
+            })
+
+            $('#resetBtn').on('click', function() {
+                resetBtnClicked()
+            })
+        })
+
+        function generateBtnClicked() {
+            let primesCount = $('#limitId').val()
+
+            if (primesCount > limitDefault) {
+                console.log('Exceed Limit')
+                return
+            }
+
+            generatePrimes(primesCount)
+        }
+
+        function resetBtnClicked() {
+            $('#limitId').val(limitDefault)
+        }
+
+        function generatePrimes(primesCount) {
+            const primes = []
+            let isPrime
+
+            for (let i = 1; i <= primesCount; i++) {
+                isPrime = true
+                
+                for (let j = 2; j <= Math.sqrt(i); j++) {
+                    if ((i % j) === 0) {
+                        isPrime = false
+                        break
+                    }
+                }
+
+                if (isPrime) {
+                    primes.push(i)
+                    console.log("Prime: " + i)
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>
