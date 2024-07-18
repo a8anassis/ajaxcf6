@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .prod-list {
+            height: 60vh;
+        }
+
+        .pagination {
+            display: flex;
+            width: 50%;
+            justify-content: end;
+            list-style-type: none;
+        }
+
+        .pagination li {
+            margin: 5px;
+        }
+
+        .pagination li a {
+            cursor: pointer;
+            padding: 5px 10px;
+            /* border: 1px solid #ddd; */
+            text-decoration: none;
+        }
+
+        .pagination li a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="outer">
+
+        <h1>List of products</h1>
+        <div class="prod-list" id="prod-list">
+
+        </div>
+        <ul class="pagination" id="pagination"></ul>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="main-pag.js"></script>
+</body>
+</html>
