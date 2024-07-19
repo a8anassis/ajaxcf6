@@ -48,3 +48,29 @@ function renderPagination(products) {
     } 
 }
 
+function fetchData() {
+    // Promosified AJAX call
+    return new Promise((resolve, reject) => {
+        let ajaxRequest = new XMLHttpRequest()
+        ajaxRequest.open('GET', 'https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json', true)
+        ajaxRequest.timeout = 5000
+        ajaxRequest.ontimeout = () => onApiError()
+
+        ajaxRequest.onreadystatechange = function() {
+            if (ajaxRequest.readyState === 4) {
+                if (ajaxRequest.status === 200) {
+                    const products = JSON.parse(ajaxRequest.responseText)
+                    resolve(products)
+                } else {
+                    reject(new Error('Failed to load data'))
+                }
+            }
+        }
+
+        ajaxRequest.send()
+    })
+}
+
+function onApiError() {
+    console.log('API Error')
+}
