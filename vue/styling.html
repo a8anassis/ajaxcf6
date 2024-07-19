@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    
+    <div id="app">
+        <span :class="{'bg-blue': isActiveBg, 'fg-white': isActiveFg}" :style="styleObject">{{message}}</span> 
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.33/dist/vue.global.min.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                   message: 'Hello CF!',
+                   isActiveBg: true,
+                   isActiveFg: false,
+                   styleObject: {fontSize: '50px'}
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <span>Avg of [{{grades.join(', ')}}] is {{avg}}</span>      
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.33/dist/vue.global.min.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    grades: [10, 9, 6, 3]
+                }
+            },
+            computed: {
+                avg: function() {
+                    let sum = this.grades.reduce((total, value) => total + value)
+                    return sum / this.grades.length  
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
