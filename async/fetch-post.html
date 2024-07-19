@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+
+    <form id="postForm">
+        <input type="text" id="title" placeholder="insert title" required>
+        <textarea id="body" placeholder="Insert desciption" required></textarea>
+        <br>
+        <button type="submit">Create Post</button>    
+    </form>
+
+    <div id="response">
+
+    </div>
+    
+    <script>
+        $(function() {
+            $('#postForm').on('submit', function(e) {
+                e.preventDefault()
+
+                const title = $('#title').val()
+                const body = $('#body').val()
+
+                fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: title,
+                        body: body,
+                        userId: 10
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API Error with status: ' + response.status)
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    console.log('Success: ', data)
+                    $('#response').append(`<p>ID: ${data.id}</p>`)
+                    $('#response').append(`<p>User Id: ${data.userId}</p>`)
+                    $('#response').append(`<p>Title: ${data.title}</p>`)
+                    $('#response').append(`<p>Body: ${data.body}</p>`)
+                })           
+            })
+        })    
+    </script>
+
+</body>
+</html>
