@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+
+    <form id="postForm">
+        <input type="text" id="title" placeholder="insert title" required>
+        <textarea id="body" placeholder="Insert desciption" required></textarea>
+        <br>
+        <button type="submit">Create Post</button>
+        <div id="response">
+
+        </div>
+    </form>
+    
+    <script>
+        $(function() {
+            $('#postForm').on('submit', function(e) {
+                e.preventDefault()
+
+                const title = $('#title').val()
+                const body = $('#body').val()
+
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        title: title,
+                        body: body,
+                        userId: 10
+                    }),
+                    success: function(data) {
+                        console.log('Success', data)
+                        $('#response').html(`<p>Post created successfully with id: ${data.id}</p>`)
+                    },
+                    error: function(error) {
+                        console.log('Error', error)
+                        $('#response').html(`<p>Error: ${error}</p>`)
+                    }
+                })
+            })
+        })    
+    </script>
+
+</body>
+</html>
